@@ -24,6 +24,13 @@ q3 MU?menu q4;
 User1 refines? User;
 {% endif %}
 </div>
+<label for="imageTypes">Select image output format:</label>
+<input list="imageTypes" name="imageType" id="imageType">
+   <datalist id="imageTypes">
+      <option value="jpeg">
+      <option value="png">
+      <option value="pdf">
+   </datalist>
    <input type="button" value="Submit" onclick="enterText();">
     <input id="scriptFile" type="file">
 <div id="file-content" style="display: none;"></div>
@@ -65,7 +72,8 @@ User1 refines? User;
   $(function() {
    $('#hiddenForm').bind('click',function() {
      $.getJSON($SCRIPT_ROOT + 'output', {
-       a: $('input[name="script"]').val()
+       a: $('input[name="script"]').val(),
+       b: $('input[name="imageType"]').val()
      }, function(data) {
        $("#outputText").html(data.result);
        $("#resultImg").attr('src',data.image);
