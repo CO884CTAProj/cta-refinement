@@ -24,16 +24,17 @@ q3 MU?menu q4;
 User1 refines? User;
 {% endif %}
 </div>
-<<<<<<< HEAD
 <label for="imageTypes">Select image output format:</label>
-<input list="imageTypes" name="imageType" id="imageType">
-   <datalist id="imageTypes">
-      <option value="jpeg">
-      <option value="png">
-      <option value="pdf">
-   </datalist>
-   <input type="button" value="Submit" onclick="enterText();">
-   <input id="scriptFile" type="file">
+   <select id="imageTypes">
+      <option value="jpeg">jpeg</option>
+      <option value="png">png</option>
+      <option value="svg">svg</option>
+      </select>
+<br>   
+<label for ="scriptFile"> Upload script: </label>
+<input id="scriptFile" type="file">
+<br>
+<input type="button" value="Submit" onclick="enterText();">
 <div id="file-content" style="display: none;"></div>
    <div>
       <p><textarea readonly id="outputText" rows="20" cols="45" width="100%"></textarea></p>
@@ -70,13 +71,14 @@ User1 refines? User;
       $('#hiddenForm').bind('click',function() {
          $.getJSON($SCRIPT_ROOT + 'output', {
             a: $('input[name="script"]').val(),
-            b: $('input[name="script"]').val()
+            b: $('#imageTypes').val()
          }, function(data) {
                $("#outputText").html(data.result);
                $("#resultImg").attr('src',data.image);
             });
          return false;
       });
+   });
 
 </script>
 <script src="../static/js/index.js"></script>

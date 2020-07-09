@@ -24,8 +24,8 @@ q3 MU?menu q4;
 User1 refines? User;
 {% endif %}
 </div>
-<<<<<<< HEAD
 <label for="imageTypes">Select image output format:</label>
+<<<<<<< HEAD
 <input list="imageTypes" name="imageType" id="imageType">
    <datalist id="imageTypes">
       <option value="jpeg">
@@ -33,7 +33,19 @@ User1 refines? User;
       <option value="pdf">
    </datalist>
    <input type="button" value="Submit" onclick="enterText();">
-   <input id="scriptFile" type="file">
+    <input id="scriptFile" type="file">
+=======
+   <select id="imageTypes">
+      <option value="jpeg">jpeg</option>
+      <option value="png">png</option>
+      <option value="svg">svg</option>
+      </select>
+<br>   
+<label for ="scriptFile"> Upload script: </label>
+<input id="scriptFile" type="file">
+<br>
+<input type="button" value="Submit" onclick="enterText();">
+>>>>>>> master
 <div id="file-content" style="display: none;"></div>
    <div>
       <p><textarea readonly id="outputText" rows="20" cols="45" width="100%"></textarea></p>
@@ -65,18 +77,33 @@ User1 refines? User;
   document.getElementById('editor').style.fontSize='20px';
   document.getElementById('editor').style.width = '100%';
 
+<<<<<<< HEAD
+  //Ajax call to server to retrieve refinement and image response
+  $(function() {
+   $('#hiddenForm').bind('click',function() {
+     $.getJSON($SCRIPT_ROOT + 'output', {
+       a: $('input[name="script"]').val(),
+       b: $('input[name="imageType"]').val()
+     }, function(data) {
+       $("#outputText").html(data.result);
+       $("#resultImg").attr('src',data.image);
+     });
+     return false;
+=======
 //Ajax call to server to retrieve refinement and image response
    $(function() {
       $('#hiddenForm').bind('click',function() {
          $.getJSON($SCRIPT_ROOT + 'output', {
             a: $('input[name="script"]').val(),
-            b: $('input[name="script"]').val()
+            b: $('#imageTypes').val()
          }, function(data) {
                $("#outputText").html(data.result);
                $("#resultImg").attr('src',data.image);
             });
          return false;
       });
+>>>>>>> master
+   });
 
 </script>
 <script src="../static/js/index.js"></script>
